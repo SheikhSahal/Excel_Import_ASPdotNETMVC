@@ -1,0 +1,40 @@
+﻿@model List<Excel_Import_ASPdotNETMVC.Models.Student>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<form action="@Url.Action("Index","Product")" method="post" enctype="multipart/form-data">
+    <span>@ViewBag.error</span>
+    <br />
+    <span>
+        Excel File
+    </span>
+    <input type="file" name="excelfile" />
+    <br />
+    <input type="submit" value="Import" />
+</form>
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.id</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.Quantity</td>
+            </tr>
+        }
+    }
+
+
+
+</table>
